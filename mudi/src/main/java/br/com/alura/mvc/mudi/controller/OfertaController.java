@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class OfertaController {
 
 	@GetMapping
-	public String getFormularioParaOfertas(){
+	public String getFormularioParaOfertas() {
 		return "oferta/home";
 	}
 }

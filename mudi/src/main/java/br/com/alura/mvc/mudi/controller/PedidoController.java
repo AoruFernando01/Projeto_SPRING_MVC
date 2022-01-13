@@ -16,7 +16,6 @@ import br.com.alura.mvc.mudi.model.User;
 import br.com.alura.mvc.mudi.repository.PedidoRepository;
 import br.com.alura.mvc.mudi.repository.UserRepository;
 
-
 @Controller
 @RequestMapping("pedido")
 public class PedidoController {
@@ -37,11 +36,12 @@ public class PedidoController {
 		if (result.hasErrors()) {
 			return "pedido/formulario";
 		}
-		String username = SecurityContextHolder.getContext().getAuthentication().getName();
-		User user = userRepository.findByUsername(username);
 
+		String username = SecurityContextHolder.getContext().getAuthentication().getName();
+
+		User usuario = userRepository.findByUsername(username);
 		Pedido pedido = requisicao.toPedido();
-		pedido.setUser(user);
+		pedido.setUser(usuario);
 		pedidoRepository.save(pedido);
 		return "redirect:/home";
 	}
